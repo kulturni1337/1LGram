@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1LGram</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <img id="userProfileAvatar" src="https://via.placeholder.com/48/4299e1/fff?text=U" alt="Profile" class="profile-avatar">
+                <div class="profile-info">
+                    <span id="userName" class="profile-name"></span>
+                    <i class="fas fa-edit profile-edit-icon" id="profileEditIcon"></i>
+                </div>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchChats" placeholder="Поиск">
+                <div class="search-results" id="searchResults">
+                    </div>
+            </div>
+            <div class="chat-list" id="chatList">
+                </div>
+        </aside>
+
+        <main class="chat-window">
+            <div class="chat-header">
+                <img id="chatAvatar" src="https://via.placeholder.com/40/4a5568/e2e8f0?text=C" alt="Avatar" class="chat-avatar">
+                <div class="chat-header-info">
+                    <span id="chatName" class="chat-name"></span>
+                    <span id="chatStatus" class="chat-status"></span>
+                </div>
+            </div>
+            <div class="message-area" id="messageArea">
+                </div>
+            <div class="message-input-area">
+                <input type="text" id="messageInput" placeholder="Написать сообщение...">
+                <button id="sendMessageButton" class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </main>
+
+        <div id="profileModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Редактировать профиль</h3>
+                <input type="text" id="editName" placeholder="Новое имя">
+                <input type="text" id="editAvatarUrl" placeholder="URL новой аватарки">
+                <button id="saveProfileButton">Сохранить</button>
+            </div>
+        </div>
+
+        <div id="notificationContainer" class="notification-container"></div>
+    </div>
+    <script src="chats.js"></script>
+</body>
+</html>

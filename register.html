@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация в 1LGram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <input type="text" id="username" placeholder="Логин" required>
+                <input type="text" id="name" placeholder="Имя" required>
+                <input type="password" id="password" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p id="message" class="error-message"></p>
+            <p>Уже есть аккаунт? <a href="index.html">Войти</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+
+            try {
+                const response = await fetch('http://localhost:3000/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password, name })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    messageElement.innerText = 'Регистрация прошла успешно!';
+                    messageElement.className = 'success-message';
+                    window.location.href = 'index.html';
+                } else {
+                    messageElement.innerText = data.error;
+                    messageElement.className = 'error-message';
+                }
+            } catch (error) {
+                messageElement.innerText = 'Произошла ошибка при регистрации.';
+                messageElement.className = 'error-message';
+            }
+        });
+    </script>
+</body>
+</html>
