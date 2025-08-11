@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const SECRET_KEY = process.env.SECRET_KEY || 'default_secret_key';
 const APP_NAME = process.env.APP_NAME || 'My App';
 
